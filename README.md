@@ -76,11 +76,11 @@ crab checkwrite --site=T3_US_CMU
 To submit the CRAB jobs for the `DYJetsToLL` and `TTto2L2Nu` datasets,
 
 ```
-crab submit -c crabConfig_DYJetsToLL_Run3Summer22_NanoAODv11.py
+crab submit -c crabConfig_DYJetsToLL.py
 ```
 
 ```
-crab submit -c crabConfig_TTto2L2Nu_Run3Summer22_NanoAODv11.py
+crab submit -c crabConfig_TTto2L2Nu.py
 ```
 
 If you wish to create your own CRAB jobs, check out these twikis on the [CRAB software](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideCrab) and [CRAB configuration file](https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile).
