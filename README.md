@@ -2,9 +2,9 @@
 
 This README focuses on the usage of PFNano as it pertains to DeepMET. The original README from cms-jet can be found [here](https://github.com/cms-jet/PFNano/tree/12_6_0#readme).
 
-This branch is for generating custom Run3 **NanoAODv11** (12_6_X) data with PF candidate information **using MiniAODv3** (12_4_X) data. For NanoAODv12 data ("v12-like") use the [13_0_7_from124MiniAOD branch](https://github.com/DeepMETv2/PFNano/tree/13_0_7_from124MiniAOD#readme).
+This branch is for generating custom Run3 **NanoAODv11** (12_6_X) data with PF candidate information **using MiniAODv3** (12_4_X) data. NanoAODv11 is the recommended version for Run3Summer22/Run3Summer22EE. For the most up-to-date information, refer to the [XPOG recommendations](https://gitlab.cern.ch/cms-nanoAOD/nanoaod-doc) or the [NanoAOD twiki](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookNanoAOD).
 
-NanoAODv11 is the recommended version for Run3Summer22/Run3Summer22EE. For the most up-to-date information, refer to the [XPOG recommendations](https://gitlab.cern.ch/cms-nanoAOD/nanoaod-doc) or the [NanoAOD twiki](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookNanoAOD).
+For NanoAODv12 data ("v12-like"), use the [13_0_7_from124MiniAOD branch](https://github.com/DeepMETv2/PFNano/tree/13_0_7_from124MiniAOD#readme).
 
 Our additions to the original code from cms-jet are found in the `PFNano/deepmet` folder. The only other minor modification is to `PFNano/python/pfnano_cff.py` to not include data relevant to the BTV group (who currently maintains the cms-jet code) that is not relevant for DeepMET training.
 
