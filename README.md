@@ -1,8 +1,10 @@
 # PFNano
 
-This README focuses on the usage of PFNano as it pertains to DeepMET. The original README from cms-jet can be found [here](https://github.com/cms-jet/PFNano/tree/12_6_0#readme). 
+This README focuses on the usage of PFNano as it pertains to DeepMET. The original README from cms-jet can be found [here](https://github.com/cms-jet/PFNano/tree/12_6_0#readme).
 
-This branch is for generating custom Run3 **NanoAODv11** (12_6_X) data with PF candidate information **using MiniAODv3** (12_4_X) data. NanoAODv11 is the recommended version for Run3Summer22/Run3Summer22EE. For the most up-to-date information, refer to the [XPOG recommendations](https://gitlab.cern.ch/cms-nanoAOD/nanoaod-doc) or the [NanoAOD twiki](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookNanoAOD).
+This branch is for generating custom Run3 **NanoAODv11** (12_6_X) data with PF candidate information **using MiniAODv3** (12_4_X) data. For NanoAODv12 data ("v12-like") use the [13_0_7_from124MiniAOD branch](https://github.com/DeepMETv2/PFNano/tree/13_0_7_from124MiniAOD#readme).
+
+NanoAODv11 is the recommended version for Run3Summer22/Run3Summer22EE. For the most up-to-date information, refer to the [XPOG recommendations](https://gitlab.cern.ch/cms-nanoAOD/nanoaod-doc) or the [NanoAOD twiki](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookNanoAOD).
 
 Our additions to the original code from cms-jet are found in the `PFNano/deepmet` folder. The only other minor modification is to `PFNano/python/pfnano_cff.py` to not include data relevant to the BTV group (who currently maintains the cms-jet code) that is not relevant for DeepMET training.
 
@@ -34,7 +36,8 @@ The cmsDriver command can also be run directly (backslashes `\` are only for sep
 ```
 cmsDriver.py deepmet_Run3Summer22_NanoAODv11 \
 --mc --eventcontent NANOAODSIM --datatier NANOAODSIM --step NANO \
---conditions 126X_mcRun3_2022_realistic_v2   --era Run3,run3_nanoAOD_124 \
+--conditions 126X_mcRun3_2022_realistic_v2 \
+--era Run3,run3_nanoAOD_124 \
 --customise_commands="process.add_(cms.Service('InitRootHandlers', \
 EnableIMT = cms.untracked.bool(False)));\
 process.MessageLogger.cerr.FwkReport.reportEvery=1000;\
@@ -51,7 +54,7 @@ If you are editing this command (directly or in `run_cmsDriver.sh`), the most im
 
 `--conditions` is the global tag (GT) and can be found by looking at the [cmsDriver recipes used by PdmV for Run3](https://twiki.cern.ch/twiki/bin/view/CMS/PdmVRun3Analysis#Recipes_for_Run3Summer22_and_Run).
 
-The PFNano modifications are added with the argument 
+The PFNano modifications are added with the argument
 
 `--customise="PhysicsTools/PFNano/pfnano_cff.PFnano_customizeMC_allPF"`.
 
@@ -104,8 +107,8 @@ Once the jobs are done, they will be published on CMSDAS. They will not show up 
 The dataset name and link can be found in the output of `crab status`. For example,
 
 ```
-Output dataset:			/DYJetsToLL_M-50_TuneCP5_13p6TeV-madgraphMLM-pythia8/alejands-crab_DYJetsToLL_Run3Summer22_NanoAODv11_fromMiniAODv3_20231110-171626-b10ea1d3f479304bbcebaae9e3f37c24/USER
-Output dataset DAS URL:		https://cmsweb.cern.ch/das/request?input=%2FDYJetsToLL_M-50_TuneCP5_13p6TeV-madgraphMLM-pythia8%2Falejands-crab_DYJetsToLL_Run3Summer22_NanoAODv11_fromMiniAODv3_20231110-171626-b10ea1d3f479304bbcebaae9e3f37c24%2FUSER&instance=prod%2Fphys03
+Output dataset:	                /DYJetsToLL_M-50_TuneCP5_13p6TeV-madgraphMLM-pythia8/alejands-crab_DYJetsToLL_Run3Summer22_NanoAODv11_fromMiniAODv3_20231110-171626-b10ea1d3f479304bbcebaae9e3f37c24/USER
+Output dataset DAS URL:	        https://cmsweb.cern.ch/das/request?input=%2FDYJetsToLL_M-50_TuneCP5_13p6TeV-madgraphMLM-pythia8%2Falejands-crab_DYJetsToLL_Run3Summer22_NanoAODv11_fromMiniAODv3_20231110-171626-b10ea1d3f479304bbcebaae9e3f37c24%2FUSER&instance=prod%2Fphys03
 ```
 
 [Link to CMSDAS example here](https://cmsweb.cern.ch/das/request?input=%2FDYJetsToLL_M-50_TuneCP5_13p6TeV-madgraphMLM-pythia8%2Falejands-crab_DYJetsToLL_Run3Summer22_NanoAODv11_fromMiniAODv3_20231110-171626-b10ea1d3f479304bbcebaae9e3f37c24%2FUSER&instance=prod%2Fphys03). If you're looking up the dataset by copying the name, be sure to change the dbs instance to `prod/phys03` above the search bar on CMSDAS.
@@ -125,4 +128,4 @@ This can be useful for saving the list of generated files to a text file for fut
 edmFileUtil root://cmsxrootd.fnal.gov//store/user/alejands/DeepMET/DYJetsToLL_M-50_TuneCP5_13p6TeV-madgraphMLM-pythia8/crab_DYJetsToLL_Run3Summer22_NanoAODv11_fromMiniAODv3_20231110-171626/231110_231636/0000/out_deepmet_1.root
 ```
 
-`cmsxrootd.fnal.gov` is for LPC use. For LXPLUS, use `xrootd-cms.infn.it`. See also the [xrootd twiki](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookXrootdService).
+NOTE: `cmsxrootd.fnal.gov` is for LPC use. For LXPLUS, use `xrootd-cms.infn.it`. See also the [xrootd twiki](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookXrootdService).
