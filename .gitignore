@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+### deepmet ignore ###
+# test root files
+*deepmet*.root
+# crab logs
+deepmet/CrabJobs/

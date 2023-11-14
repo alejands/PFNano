@@ -14,7 +14,7 @@ def PFnano_customizeMC(process):
 
 def PFnano_customizeMC_allPF(process):
     addPFCands(process, True, True)
-    add_BTV(process, True, keepInputs=['DeepCSV','DeepJet','DDX'])
+    add_BTV(process, True, keepInputs=[])
     return process
 
 def PFnano_customizeMC_AK4JetsOnly(process):
