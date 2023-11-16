@@ -2,10 +2,7 @@ import os
 from CRABClient.UserUtilities import config
 config = config()
 
-import datetime
-timestamp = datetime.datetime.now().strftime('_%Y%m%d-%H%M%S')
-
-config.General.requestName = '__requestName__' + timestamp
+config.General.requestName = '__requestName__'
 config.General.workArea = 'CrabJobs'
 config.General.transferLogs = True
 config.General.instance = 'prod'
