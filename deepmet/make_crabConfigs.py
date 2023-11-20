@@ -1,4 +1,4 @@
-#! /bin/python3
+#!/usr/bin/env python3
 import sys,re   # Native python libraries
 
 if len(sys.argv) != 3:
@@ -58,21 +58,6 @@ jobs.append({
 'nEvents': 200000
 })
 
-### UTILITY FUNCTIONS ###
-
-def checkIfValidSite(site_):
-    if not re.search('^T[0-3]_[A-Z]{2}_[A-Z]+$',site_):
-        print(f'Invalid site format: {site_}')
-        sys.exit()
-
-def checkIfValidDatasets(jobs_):
-    for job in jobs_:
-        dataset = job['dataset']
-        if not re.search('\/(.+)\/(.+)\/(.+)', dataset):
-            print(f'Invalid dataset format: {dataset}')
-            print('Datasets must be of the format "/<PrimaryDataset>/<ProcessedDataset>/<DataTier>"')
-            sys.exit()
-
 ### MAIN ###
 
 def main():
@@ -122,6 +107,21 @@ def main():
             submit_all.write(f'{cmd}\n')
 
     print('submit_all.py updated')
+
+### UTILITY FUNCTIONS ###
+
+def checkIfValidSite(site_):
+    if not re.search('^T[0-3]_[A-Z]{2}_[A-Z]+$',site_):
+        print(f'Invalid site format: {site_}')
+        sys.exit()
+
+def checkIfValidDatasets(jobs_):
+    for job in jobs_:
+        dataset = job['dataset']
+        if not re.search('\/(.+)\/(.+)\/(.+)', dataset):
+            print(f'Invalid dataset format: {dataset}')
+            print('Datasets must be of the format "/<PrimaryDataset>/<ProcessedDataset>/<DataTier>"')
+            sys.exit()
 
 if __name__ == '__main__':
     main()
