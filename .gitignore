@@ -103,5 +103,6 @@ ENV/
 ### deepmet ignore ###
 # test root files
 *deepmet*.root
-# crab logs
+# crab outputs
 deepmet/CrabJobs/
+deepmet/NanoAOD/
